@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 public class UserModel {
@@ -10,11 +11,11 @@ public class UserModel {
     
     private String email;
 
-    private OffsetDateTime aniversario;
+    private LocalDate aniversario;
 
     
 
-    public UserModel(long id, String name, String email, OffsetDateTime aniversario) {
+    public UserModel(long id, String name, String email, LocalDate aniversario) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -48,11 +49,11 @@ public class UserModel {
         this.email = email;
     }
 
-    public OffsetDateTime getAniversario() {
+    public LocalDate getAniversario() {
         return aniversario;
     }
 
-    public void setAniversario(OffsetDateTime aniversario) {
+    public void setAniversario(LocalDate aniversario) {
         this.aniversario = aniversario;
     }
 
