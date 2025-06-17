@@ -13,23 +13,23 @@ public class Contador {
 		try {
 			contar(parametroUm, parametroDois);
 		}catch (ParametrosInvalidosException ex) {
-            System.out.println(ex.getMessage());
+	    		System.out.println(ex.getMessage());
 		}
+	
+	terminal.close();
 
-        terminal.close();
-		
 	}
-
+	
 	static void contar(int parametroUm, int parametroDois ) throws ParametrosInvalidosException {
-
-        if (parametroUm > parametroDois) {
-            throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro.");
-        }
+	
+		if (parametroUm > parametroDois) {
+		    throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro.");
+		}
 		int contagem = parametroDois - parametroUm;
-        System.err.println("Realizando a subtração do número: " + parametroDois + " - " + parametroUm + " e o resultado é: " + contagem);
-        System.out.println("Iniciando contagem:");
-        for (int i = 1; i <= contagem; i++) {
-            System.out.println(i);
-        }
+		System.err.println("Realizando a subtração do número: " + parametroDois + " - " + parametroUm + " e o resultado é: " + contagem);
+		System.out.println("Iniciando contagem:");
+		for (int i = 1; i <= contagem; i++) {
+		    System.out.println(i);
+		}
 	}
 }
