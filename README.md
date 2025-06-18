@@ -37,8 +37,8 @@ Estude e faça todas as atividades para se graduar e ganhar seu **certificado**!
 ## 🤝 Parceria
 
 Este curso foi promovido em parceria por:  
-- [Santander](https://www.santander.com.br)  
-- [DIO](https://www.dio.me)
+- [Santander Open Academy](https://app.santanderopenacademy.com/pt-BR/program/santander-bootcamp-2025)  
+- [DIO](https://web.dio.me/track/santander-2025-java-back-end)  
 
 ---
 
