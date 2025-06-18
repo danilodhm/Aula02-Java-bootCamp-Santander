@@ -1,8 +1,17 @@
+import java.time.OffsetDateTime;
+
 public class Person {
     
-    String name;
+    final String name;
 
     Integer age;
+
+    private int lastYearAgeInc = OffsetDateTime.now().getYear();
+
+    public Person(String name, Integer age){
+        this.name = name;
+        this.age = 1;
+    }
        
     public String getName() {
         return name;
@@ -12,12 +21,11 @@ public class Person {
         return age;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void incAge(){
+        if(this.lastYearAgeInc >= OffsetDateTime.now().getYear()) return;
+        this.age += 1;
+        this.lastYearAgeInc = OffsetDateTime.now().getYear();
 
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
 }
