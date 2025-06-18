@@ -8,9 +8,9 @@ public class Person {
 
     private int lastYearAgeInc = OffsetDateTime.now().getYear();
 
-    public Person(String name, Integer age){
+    public Person(String name){
         this.name = name;
-        this.age = 1;
+        this.age = (age != null) ? age : 1;
     }
        
     public String getName() {
