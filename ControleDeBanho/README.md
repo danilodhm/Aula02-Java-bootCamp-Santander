@@ -21,3 +21,6 @@ Este projeto tem como objetivo simular o controle de banho de um petshop. A máq
 
 - Não é possível colocar um novo pet sem antes limpar a máquina caso o pet anterior tenha saído sujo.
 - Não é possível dar banho se não houver água ou shampoo suficiente.
+
+
+[GITHUB](https://github.com/digitalinnovationone/exercicios-java-basico/blob/main/exercicios/3%20-%20Java%20e%20a%20Arte%20da%20Abstra%C3%A7%C3%A3o%20com%20Classes%20e%20Encapsulamento.md)
