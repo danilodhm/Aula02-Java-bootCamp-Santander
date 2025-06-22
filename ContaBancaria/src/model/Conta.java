@@ -1,9 +1,11 @@
 package model;
 
+import valid.validateService;
+
 public class Conta {
 
     private String nome;
-    private int cpf;
+    private Long cpf;
     private double saldoConta = 0;
     private double limitChequeEspecial = 0;
     private double usoChequeEspecial = 0;
@@ -21,10 +23,10 @@ public class Conta {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public int getCpf() {
+    public Long getCpf() {
         return cpf;
     }
-    public void setCpf(int cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
     public double getSaldoConta() {
@@ -33,6 +35,9 @@ public class Conta {
     public void setSaldoConta(double saldoConta) {
         this.saldoConta = saldoConta;
         System.out.println("Seu saldo foi atualizado com sucesso.");
+        var totalLiberadoCheque = validateService.validSaldoChequeEspecial(getUsoChequeEspecial(), getLimitChequeEspecial());
+        var total = getSaldoConta() + totalLiberadoCheque;
+        System.out.println("Seu saldo atual: " + getSaldoConta() + "+" + totalLiberadoCheque + "(Cheque especial) = " + String.format("%.2f", total) + ".");
     }
     public double getUsoChequeEspecial() {
         return usoChequeEspecial;
@@ -45,9 +50,4 @@ public class Conta {
         return "Conta [nome=" + nome + ", cpf=" + cpf + ", saldoConta=" + saldoConta + ", limitChequeEspecial="
                 + limitChequeEspecial + ", usoChequeEspecial=" + usoChequeEspecial + "]";
     }
-
-
-
-    
-
 }

@@ -1,6 +1,7 @@
 package valid;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.Conta;
 
@@ -12,45 +13,63 @@ public class validateService {
     public static ArrayList<Conta> contasCadastradas = new ArrayList<>();
     
 
-    public static Conta validConta(Integer cpf){
+    public static boolean acceptTermo() {
+        var termo = scanner.next();
+
+        if (termo.equalsIgnoreCase("N")) {
+            return false;
+        } else if (termo.equalsIgnoreCase("S")) {
+            return true;
+        } else {
+            System.out.println("Opção inválida!");
+            return false;
+        }
+    }
+
+    public static Double validSaldoChequeEspecial(Double usoChequeEspecial, Double limitChequeEspecial){
+        if (usoChequeEspecial >= limitChequeEspecial){
+            return 0.0;
+        }
+
+        var totalDisponivel = limitChequeEspecial - usoChequeEspecial;
+        return totalDisponivel;
+    }
+
+    public static Conta validConta(Long cpf){
         for(Conta myconta: contasCadastradas){
-            if (myconta.getCpf() == cpf) {
+            if (myconta.getCpf() == (long) cpf) {
                 return myconta;
             }
         }
         return null;
     }
 
-    public static Double validDeposito(){
-        System.out.println("Digite o valor para deposito:");
-        var valor = scanner.nextDouble();
-        if(valor < 0){
-            System.out.println("O valor não pode ser negativo.");
-            return null;
-        }
-        return valor;
-    }
-
-    public static double validSaldo() {
-        System.out.println("Digite o quanto deseja depositar:");
+    public static double validValor() {
+        System.out.println("Digite o valor:");
         var saldo = scanner.nextDouble();
         if(saldo < 0){
             System.out.println("Não é permitido valores negativos.");
-            return validSaldo();
+            return validValor();
         }
         return saldo;
     }
     
-    public static int validCpf(){
-        System.out.println("Digite seu cpf:");
-        var cpf = scanner.nextInt();
-        System.out.println("Digite novamente seu cpf:");
-        var cpf2 = scanner.nextInt();
-        if(cpf != cpf2){
-            System.out.println("O Cpf digitado não são iguais.");
+    public static Long validCpf(){
+        try {
+            System.out.println("Digite seu cpf:");
+            var cpf = scanner.nextLong();
+            System.out.println("Digite novamente seu cpf:");
+            var cpf2 = scanner.nextLong();
+            if(cpf != cpf2){
+                System.out.println("O Cpf digitado não são iguais.");
+                return validCpf();
+            }
+            return cpf;
+        } catch (InputMismatchException e) {
+            System.out.println("Digite apenas números para o CPF.");
+            scanner.nextLine();
             return validCpf();
         }
-        return cpf;
     }
 
     public static Double coberturaChequeEspecial(Double saldo) {

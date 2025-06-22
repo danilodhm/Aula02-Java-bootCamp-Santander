@@ -4,10 +4,12 @@ import model.Conta;
 import valid.validateService;
 import services.consultas;
 import services.deposito;
+import services.boleto;
+import services.saque;
 
 public class Main {
     private final static Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         System.out.println("Seja bem vindo a sua Conta Bancaria.\n");
 
@@ -30,6 +32,14 @@ public class Main {
                 case 1 -> consultas.ConsultarSaldo();
                 case 2 -> consultas.ConsultarChequeEspecial();
                 case 3 -> deposito.depositar();
+                case 4 -> saque.sacar();
+                case 5 -> boleto.pagar();
+                case 6 -> consultas.ConsultarUsoChequeEspecial();
+                case 7 -> System.exit(0);
+                default -> {
+                    System.out.println("Opção invalida.");
+                }
+
             }
 
         }while (true);
@@ -38,16 +48,17 @@ public class Main {
     public static void CadastrarConta(){
         System.out.println(" Sistema de Cadastro de Conta.");
         System.out.println("Digite seu nome:");
-        var nome = scanner.next();
+        var nome = scanner.nextLine();
+        scanner.nextLine();
         var cpf = validateService.validCpf();
-        var saldo = validateService.validSaldo();
+        var saldo = validateService.validValor();
         var limitChequeEspecial = validateService.coberturaChequeEspecial(saldo);
         var conta = new Conta();
         conta.setNome(nome);
         conta.setCpf(cpf);
-        conta.setSaldoConta(saldo);
         conta.setLimitChequeEspecial(limitChequeEspecial);
         conta.setUsoChequeEspecial(0.0);
+        conta.setSaldoConta(saldo);
 
         validateService.contasCadastradas.add(conta);
 

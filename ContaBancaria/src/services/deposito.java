@@ -10,16 +10,14 @@ public class deposito {
 
     public static void depositar(){
         System.out.println("Digite seu CPF:");
-        var cpf = scanner.nextInt();
+        var cpf = scanner.nextLong();
         var myconta = validateService.validConta(cpf);
         if (myconta == null) {
-            System.out.println("CPF não locaizado!");
-        }
-        var deposito = validateService.validDeposito();
-        if (deposito == null) {
+            System.out.println("CPF não localizado!");
             return;
         }
-
+        var deposito = validateService.validValor();
+        
         var mysaldo = myconta.getSaldoConta();
         var total = mysaldo + deposito;
         myconta.setSaldoConta(total);
