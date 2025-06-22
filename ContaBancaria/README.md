@@ -28,4 +28,8 @@ Este projeto consiste em um programa em Java que simula uma **conta bancária** 
 
 Ao executar o programa, será exibido um menu como o exemplo abaixo:
 
+#Link para testes
+[Replit](https://replit.com/join/rnhftdjjcb-danilodhmjogos)
+
+#Link para exercicio
 [GITHUB](https://github.com/digitalinnovationone/exercicios-java-basico/blob/main/exercicios/3%20-%20Java%20e%20a%20Arte%20da%20Abstra%C3%A7%C3%A3o%20com%20Classes%20e%20Encapsulamento.md)
