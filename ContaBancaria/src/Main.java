@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.Conta;
@@ -10,39 +11,48 @@ import services.saque;
 public class Main {
     private final static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-
+        
         System.out.println("Seja bem vindo a sua Conta Bancaria.\n");
+        StartMenu();
+    }
 
-        var option = -1;
+    private static void StartMenu(){
+         try {
+            var option = -1;
 
-        do {
-            System.out.println("====================================");
-            System.out.println("0- Cadastrar Conta.");
-            System.out.println("1- Consultar Saldo.");
-            System.out.println("2- Consultar Cheque Especial.");
-            System.out.println("3- Depositar Dinheiro.");
-            System.out.println("4- Sacar Dinheiro.");
-            System.out.println("5- Pagar Boleto.");
-            System.out.println("6- Uso Cheque Especial");
-            System.out.println("7- Sair");
-            option = scanner.nextInt();
-            System.out.println("====================================");
-            switch (option) {
-                case 0 -> CadastrarConta();
-                case 1 -> consultas.ConsultarSaldo();
-                case 2 -> consultas.ConsultarChequeEspecial();
-                case 3 -> deposito.depositar();
-                case 4 -> saque.sacar();
-                case 5 -> boleto.pagar();
-                case 6 -> consultas.ConsultarUsoChequeEspecial();
-                case 7 -> System.exit(0);
-                default -> {
-                    System.out.println("Opção invalida.");
+            do {
+                System.out.println("====================================");
+                System.out.println("0- Cadastrar Conta.");
+                System.out.println("1- Consultar Saldo.");
+                System.out.println("2- Consultar Cheque Especial.");
+                System.out.println("3- Depositar Dinheiro.");
+                System.out.println("4- Sacar Dinheiro.");
+                System.out.println("5- Pagar Boleto.");
+                System.out.println("6- Uso Cheque Especial");
+                System.out.println("7- Sair");
+                option = scanner.nextInt();
+                System.out.println("====================================");
+                switch (option) {
+                    case 0 -> CadastrarConta();
+                    case 1 -> consultas.ConsultarSaldo();
+                    case 2 -> consultas.ConsultarChequeEspecial();
+                    case 3 -> deposito.depositar();
+                    case 4 -> saque.sacar();
+                    case 5 -> boleto.pagar();
+                    case 6 -> consultas.ConsultarUsoChequeEspecial();
+                    case 7 -> System.exit(0);
+                    default -> {
+                        System.out.println("Opção invalida.");
+                    }
+
                 }
 
-            }
-
-        }while (true);
+            }while (true);
+        } catch (InputMismatchException e) {
+            System.out.println("Digite apenas números para acessar o menu.");
+            scanner.nextLine();
+            StartMenu();
+        }
     }
     
     public static void CadastrarConta(){
