@@ -18,28 +18,32 @@ public class Main {
                 manager.setSalary(5000);
                 manager.setLogin("joao");
                 manager.setPassword("123456");
-                manager.setCommission(1200);
+                manager.setCommission(5000.0);
 
-                System.out.println(manager.getCode());
-                System.out.println(manager.getSalary());
-                System.out.println(manager.getName());
-                System.out.println(manager.getLogin());
-                System.out.println(manager.getPassword());
-                System.out.println(manager.getCommission());
+                System.out.println("Code: " + manager.getCode());
+                System.out.println("Nome: " + manager.getName());
+                System.out.println("Login: " + manager.getLogin());
+                System.out.println("Senha: " + manager.getPassword());
+                System.out.println("Salario: " + manager.getSalary());
+                System.out.println("Comissão " + manager.getCommission());
             }
             case Salesman salesman -> {
                 salesman.setCode("456");
-                salesman.setName("João");
-                salesman.setSalary(5000);
+                salesman.setName("Lucas");
+                salesman.setSalary(1800);
                 salesman.setPercentComition(10);
+                salesman.setSoldAmount(1000);
                 
-                System.out.println(salesman.getCode());
-                System.out.println(salesman.getSalary());
-                System.out.println(salesman.getName());
-                System.out.println(salesman.getPercentComition());
-
+                System.out.println("Code: " + salesman.getCode());
+                System.out.println("Nome: " + salesman.getName());
+                System.out.println("Salario " + salesman.getSalary());
+                System.out.println("Vendas: " + salesman.getSoldAmount());
+                System.out.println("Comissão: " + salesman.getPercentComition());
+                
             }
         }
+        System.out.println("Total Salario: " + employee.getFullSalary());
+        System.out.println("Extra + Salario " + employee.getFullSalary(500));
         System.out.println(" ============== ");
     }
 }
