@@ -1,48 +1,44 @@
-# Sistema de Relógios Internacionais em Java
+# ⏰ Sistema de Relógios Internacionais em Java
 
-Este projeto implementa uma **hierarquia de classes em Java** para representar relógios de diferentes regiões do mundo. Ele segue princípios básicos de **POO (Programação Orientada a Objetos)** com o uso de herança, encapsulamento e polimorfismo.
+Este projeto implementa uma hierarquia de classes para representar diferentes tipos de relógios (por exemplo, brasileiro e americano), respeitando suas regras específicas de formatação de hora.
 
-## Objetivo
+## 🧱 Estrutura do Projeto
 
-Criar uma estrutura reutilizável de relógios que permita representar diferentes formatos de exibição de hora (por exemplo, formato brasileiro 24h e formato americano 12h), respeitando as regras do funcionamento real de um relógio.
+### 🔹 Classe Abstrata: `Clock`
 
----
+A classe base `Clock` representa um relógio genérico. Ela define os atributos e métodos essenciais:
 
-## Hierarquia de Classes
+#### Atributos:
+- `hour` (int): valor de 0 a 23
+- `minute` (int): valor de 0 a 59
+- `second` (int): valor de 0 a 59
 
-### 🔹 `Relogio` (Classe Pai - Abstrata)
-
-Essa é a classe base que representa um relógio genérico. Contém:
-
-- **Atributos privados**:
-  - `hora` (0 a 23)
-  - `minuto` (0 a 59)
-  - `segundo` (0 a 59)
-
-- **Métodos públicos**:
-  - Getters e setters com validação dos valores (ex: não permite hora > 23, minuto > 59, etc.)
-  - `getHoraCompleta()` → Retorna a hora formatada no padrão `HH:MM:SS`
-  - Método **abstrato**: `ajustarHorario(Relogio outroRelogio)` → Deverá ser implementado pelas classes filhas, e será responsável por ajustar a hora de um relógio a partir de outro relógio qualquer.
+#### Métodos:
+- `setHour(int hour)`: define a hora (com validação)
+- `setMinute(int minute)`: define os minutos (com validação)
+- `setSecond(int second)`: define os segundos (com validação)
+- `getTime()`: retorna a hora formatada como `HH:MM:SS` (formato a ser implementado pela subclasse)
+- `Clock convert(Clock other)`: método **abstrato** — cada classe filha define como converter outro relógio para si mesma
 
 ---
 
-### 🔹 `RelogioBrasileiro` (Extende `Relogio`)
+### 🔹 `BRClock` (Relógio Brasileiro)
 
-- Utiliza o formato **24 horas**
-- Implementa o método `ajustarHorario` para copiar a hora, minuto e segundo de outro relógio.
-- Exibe a hora normalmente como `HH:MM:SS` no padrão brasileiro.
-
----
-
-### 🔹 `RelogioAmericano` (Extende `Relogio`)
-
-- Utiliza o formato **12 horas** (AM/PM)
-- O método `getHoraCompleta()` exibe as horas no formato: `HH:MM:SS AM/PM`
-- O método `ajustarHorario` também ajusta a hora com base em outro relógio, mantendo a lógica de 12 horas.
+- Formato: **24 horas**
+- Implementação do método `getTime()` no formato `HH:MM:SS`
+- O método `convert(Clock other)` copia os valores de hora, minuto e segundo do relógio recebido.
 
 ---
 
-## Exemplo de Uso
+### 🔹 `USClock` (Relógio Americano)
+
+- Formato: **12 horas com AM/PM**
+- Implementa `getTime()` retornando a hora no formato `HH:MM:SS AM/PM`
+- O método `convert(Clock other)` também copia os valores de hora, minuto e segundo, mas exibe no formato de 12 horas.
+
+---
+
+## 📦 Exemplo de Uso
 
 ```java
 Clock brlclock = new BRClock();
@@ -50,9 +46,9 @@ brlclock.setSecond(00);
 brlclock.setMinute(00);
 brlclock.setHour(14);
 
-System.out.println(brlclock.getTime());
+System.out.println(brlclock.getTime());                    // 14:00:00
+System.out.println(new USClock().convert(brlclock).getTime());  // 02:00:00 PM
 
-System.out.println(new USClock().convert(brlclock).getTime());
 ```
 
 
