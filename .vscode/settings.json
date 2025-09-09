@@ -1,3 +1,8 @@
 {
-    "bitoAI.codeCompletion.enableAutoCompletion": false
+
+    "java.project.sourcePaths": [
+        "sudoku\\src"
+    ],
+    "java.project.referencedLibraries": []
+
 }
